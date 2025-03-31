@@ -1,0 +1,236 @@
+/* Diseño general */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff477e, #ff6b2b, #1a73e8, #00b894);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    color: #ffffff;
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.navbar .logo {
+    font-size: 2.5em;
+    color: #ff477e;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 20px; /* Espacio entre logo y botones */
+    transition: transform 0.3s;
+}
+
+.navbar .logo:hover {
+    transform: scale(1.1);
+    color: #ff6b2b;
+}
+
+/* Botones de navegación */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    justify-content: flex-start; /* Alinea a la izquierda */
+}
+
+.nav-links a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #1a73e8, #00b894);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-links a:hover {
+    background: linear-gradient(135deg, #ff477e, #ff6b2b);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 71, 126, 0.7);
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url('imagenes/hero-bg.jpg') no-repeat center center/cover;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 5em;
+    color: #ff477e;
+    font-weight: bold;
+    text-shadow: 0 5px 20px rgba(255, 71, 126, 0.6);
+}
+
+.cta {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #ff477e, #ff6b2b);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    font-size: 1.3em;
+    border: 3px solid transparent;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(255, 71, 126, 0.5);
+    overflow: hidden;
+}
+
+.cta::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(135deg, #00b894, #1a73e8, #ff477e);
+    z-index: -1;
+    border-radius: 60px;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.cta:hover {
+    background: linear-gradient(135deg, #ff6b2b, #00b894);
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(255, 71, 126, 0.7);
+}
+
+.cta:hover::before {
+    opacity: 1;
+}
+
+
+/* Galería con imágenes alineadas en horizontal */
+/* Galería con imágenes alineadas en horizontal */
+.image-container {
+    display: flex; /* Alinea las imágenes en una fila */
+    flex-wrap: wrap; /* Permite que las imágenes pasen a la siguiente fila si no hay espacio */
+    gap: 20px; /* Espaciado uniforme entre las imágenes */
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    padding: 20px;
+}
+
+.image-card {
+    width: 300px; /* Tamaño uniforme de las imágenes */
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+    cursor: pointer; /* Indica que las imágenes son clickeables */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    background: linear-gradient(135deg, #FFD700, #00B894, #1A73E8); /* Degradado con amarillo, verde y azul */
+    padding: 10px; /* Espacio para el recuadro */
+}
+
+/* Recuadro dinámico */
+.image-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 20px; /* Bordes suaves */
+    background: linear-gradient(135deg, #1A73E8, #FFD700, #00B894); /* Mezcla de colores con psicología del color */
+    z-index: -1; /* Coloca el recuadro detrás de la imagen */
+    box-shadow: 0 0 20px rgba(255, 223, 0, 0.5); /* Sombra decorativa */
+    animation: pulse 3s infinite; /* Animación de pulsación */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.image-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Coincide con los bordes del recuadro */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-card:hover {
+    transform: scale(1.1); /* Zoom más pronunciado al pasar el cursor */
+    box-shadow: 0 15px 40px rgba(0, 184, 148, 0.8); /* Sombra verde vibrante */
+}
+
+/* Agrandamiento de las imágenes */
+.image-card:focus {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(3.0); /* Amplía la imagen y la centra */
+    z-index: 1000;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+    outline: none; /* Quita el borde de enfoque */
+    background: rgba(0, 0, 0, 0.9); /* Fondo oscuro detrás de la imagen */
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #0f3460, #1a1a2e);
+    color: #ffffff;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    border-top: 5px solid #ff477e;
+    box-shadow: 0 -5px 20px rgba(255, 71, 126, 0.5);
+    animation: fadeIn 1.5s ease-in-out;
+}
